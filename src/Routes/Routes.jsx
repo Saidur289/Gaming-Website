@@ -9,6 +9,7 @@ import AllReview from "../pages/AllReview";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "./priveate/PrivateRoute";
+import ReviewDetails from "../pages/ReviewDetails";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -17,6 +18,7 @@ import PrivateRoute from "./priveate/PrivateRoute";
         {
             path: '/',
             element: <Home></Home>,
+            loader: () => fetch('http://localhost:5000/reviews'),
         },
         {
             path: '/addReview',
@@ -24,7 +26,9 @@ import PrivateRoute from "./priveate/PrivateRoute";
         },
         {
             path: '/allReview',
-            element: <AllReview></AllReview>
+            element: <AllReview></AllReview>,
+            loader: () => fetch('http://localhost:5000/allReviews')
+            
         },
         {
           path: 'login',
@@ -33,6 +37,11 @@ import PrivateRoute from "./priveate/PrivateRoute";
         {
           path: 'register',
           element: <Register></Register>,
+        },
+        {
+          path: '/review/:id',
+          element:<PrivateRoute><ReviewDetails></ReviewDetails></PrivateRoute>,
+          loader: ({params}) => fetch(`http://localhost:5000/review/${params.id}`)
         }
       ]
     },

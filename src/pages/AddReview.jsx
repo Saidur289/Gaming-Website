@@ -1,18 +1,49 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const AddReview = () => {
-    const [publishingYear, setYear] = useState('')
-    const [rating, setRating] = useState('')
-    const handleChange = e => {
-        setYear(e.target.value)
+  const { user } = useContext(AuthContext);
+  const name = user?.displayName;
+  const email = user?.email;
+  const [publishingYear, setYear] = useState(2010);
+  const [rating, setRating] = useState(5);
+  const handleChange = (e) => {
+    const value = e.target.value;
+    if (value >= 2010 && value <= 2030) {
+      setYear(value);
     }
-    const handleChangeRating = e => {
-        setRating(e.target.value)
-    }
+  };
+  const handleChangeRating = (e) => {
+    setRating(e.target.value);
+  };
+  const handleAddReview = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const title = form.title.value;
+    const description = form.description.value;
+    const genre = form.genre.value;
+    const year = publishingYear;
+    const photo = form.photo.value;
+    const rating = form.rating.value;
+    const review = { title, description, genre, year, photo, rating, name, email };
+    fetch('http://localhost:5000/reviews', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(review)
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    })
+
+    console.log(review);
+  };
   return (
     <div className="bg-gradient-to-r from-blue-100 to-purple-200 p-24">
       <h1 className="text-3xl font-extrabold text-center mb-3">Add A Review</h1>
-      <form>
+      <form onSubmit={handleAddReview}>
         {/* form row title and description  */}
         <div className="md:flex mb-4">
           <div className="form-control md:w-1/2">
@@ -25,6 +56,7 @@ const AddReview = () => {
                 placeholder="Game Title"
                 name="title"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
@@ -37,6 +69,7 @@ const AddReview = () => {
               placeholder="Game Description"
               name="description"
               className="input input-bordered w-full"
+              required
             />
           </div>
         </div>
@@ -47,10 +80,10 @@ const AddReview = () => {
               <span className="label-text">Genre</span>
             </label>
             <select className="input input-bordered " name="genre" id="day">
-              <option value="sunday">Action</option>
-              <option value="monday">Racing</option>
-              <option value="tuesday">Adventure</option>
-              <option value="wednesday">Fighting</option>
+              <option value="Action">Action</option>
+              <option value="Racing">Racing</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Fighting">Fighting</option>
             </select>
           </div>
           <div className="form-control md:w-1/2 ml-4">
@@ -62,8 +95,8 @@ const AddReview = () => {
               id="publishingYear"
               name="publishingYear"
               placeholder="e.g., 2024"
-              min="2000"
-              max="2500"
+              min="2010"
+              max="2030"
               value={publishingYear}
               onChange={handleChange}
               className="input input-bordered w-full"
@@ -82,6 +115,7 @@ const AddReview = () => {
               placeholder="Game Cover Pic"
               name="photo"
               className="input input-bordered w-full"
+              required
             />
           </div>
           <div className="form-control md:w-1/2 ml-4">
@@ -112,7 +146,7 @@ const AddReview = () => {
               <input
                 type="text"
                 placeholder="Game Title"
-                name="name"
+                defaultValue={name}
                 className="input input-bordered w-full"
               />
             </label>
@@ -124,7 +158,7 @@ const AddReview = () => {
             <input
               type="text"
               placeholder="Game Description"
-              name="description"
+              defaultValue={email}
               className="input input-bordered w-full"
             />
           </div>
