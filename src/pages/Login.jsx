@@ -1,13 +1,49 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 
 const Login = () => {
+  const {handleSingIn, setUser, handleLoginGoogle} = useContext(AuthContext)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const handleLogin = e => {
+      e.preventDefault()
+      const form = e.target 
+      const email = form.email.value 
+      const password = form.password.value
+      
+      handleSingIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+        setUser(result.user)
+        e.target.reset()
+        toast.success('user successfully sign in')
+        navigate(location?.state? location.state : '/')
+      })
+      .catch((error) => {
+        toast.error(error.message)
+      })
+    
+     }
+     const handleGoogle = () => {
+      handleLoginGoogle()
+      .then((result) => {
+        setUser(result.user)
+        toast.success('user successfully sign in')
+        navigate(location?.state? location.state : '/')
+      })
+      .catch((error) => {
+        toast.error(error.message)
+      })
+    }
     return (
         <div className="flex min-h-screen justify-center items-center">
         <div className="card bg-base-100 w-full max-w-lg shrink-0 rounded-none shadow-lg p-10">
            <h1 className="font-semibold text-center">Login Your Account</h1>
-         <form  className="card-body">
+         <form onSubmit={handleLogin} className="card-body">
            <div className="form-control">
              <label className="label">
                <span className="label-text">Email</span>
