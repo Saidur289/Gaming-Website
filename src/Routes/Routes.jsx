@@ -6,6 +6,8 @@ import Layout from "../Layout/Layout";
 import Home from "../pages/Home";
 import AddReview from "../pages/AddReview";
 import AllReview from "../pages/AllReview";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -22,6 +24,14 @@ import AllReview from "../pages/AllReview";
         {
             path: '/allReview',
             element: <AllReview></AllReview>
+        },
+        {
+          path: 'login',
+          element: <Login></Login>,
+        },
+        {
+          path: 'register',
+          element: <Register></Register>,
         }
       ]
     },
