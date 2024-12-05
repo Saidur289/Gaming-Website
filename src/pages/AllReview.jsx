@@ -17,11 +17,12 @@ const AllReview = () => {
       console.log('error', error);
     })
   }
+  // create function for sort data
   const handleSortByRating = rating => {
     fetch(`http://localhost:5000/allReviews?sort=${rating}`)
     .then((res) => res.json())
     .then((data) => {
-      // console.log(data);
+      
       setReviews(data)
     })
     .catch((error) => {
