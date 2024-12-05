@@ -9,6 +9,7 @@ const Login = () => {
   const {handleSingIn, setUser, handleLoginGoogle} = useContext(AuthContext)
   const location = useLocation()
   const navigate = useNavigate()
+  // function for login 
   const handleLogin = e => {
       e.preventDefault()
       const form = e.target 
@@ -27,6 +28,7 @@ const Login = () => {
       })
     
      }
+    //  function for google login
      const handleGoogle = () => {
       handleLoginGoogle()
       .then((result) => {
