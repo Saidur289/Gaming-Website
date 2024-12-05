@@ -50,8 +50,20 @@ const Register = () => {
         })
        
     }
+    const handleGoogle = () => {
+      handleLoginGoogle()
+      .then((result) => {
+        console.log(result.user.photoURL);
+        setUser(result.user)
+        toast.success('user successfully sign in')
+        navigate(location?.state? location.state : '/')
+      })
+      .catch((error) => {
+        toast.error(error.message)
+      })
+    }
     return (
-        <div className="min-h-screen flex justify-center items-center mt-5">
+        <div className="bg-gradient-to-r from-blue-200 to-purple-300 flex justify-center items-center md:py-10">
         <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl p-10">
           <h1 className="font-semibold text-center">Register Now!</h1>
           <form onSubmit={handleSubmit} className="card-body">
@@ -111,7 +123,7 @@ const Register = () => {
           </form>
         
           <p className="p-3 text-center">Already Have an account? <Link className="text-red-500" to = '/login'>Login</Link></p>
-          <h1 onClick={handleLoginGoogle}  className="flex items-center justify-center gap-3 mt-3 bg-blue-900 hover:bg-blue-700 text-white text-sm py-3 rounded-lg transition duration-300"><FaGoogle></FaGoogle> Sign Up With Google</h1>
+          <h1 onClick={handleGoogle}  className="flex items-center justify-center gap-3 mt-3 bg-blue-900 hover:bg-blue-700 text-white text-sm py-3 rounded-lg transition duration-300"><FaGoogle></FaGoogle> Sign Up With Google</h1>
         </div>
       </div>
     );

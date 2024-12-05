@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+    --body-background: white,
+    --title: black;
+    --primary: blue;
+}
+[data-theme = 'light']{
+    --body-background: white,
+    --title: black;
+    --primary: blue;
+}
+[data-theme = 'dark']{
+    --body-background: black,
+    --title: white;
+    --primary: blue;
+}

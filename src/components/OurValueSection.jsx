@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import { FaEye, FaRocket, FaQuoteRight } from "react-icons/fa"; // React Icons ইমপোর্ট
 
 const OurValueSection = () => {
@@ -5,9 +6,11 @@ const OurValueSection = () => {
     <section className="bg-gradient-to-r from-blue-500 to-purple-600 py-12 text-white">
       <div className="max-w-6xl mx-auto text-center">
         <h3 className="text-sm font-semibold uppercase tracking-wide">Our Value</h3>
+        <Fade>
         <h1 className="text-3xl font-bold mt-2">
           Gaming is our passion. We create fun games that you’ll love.
         </h1>
+        </Fade>
         <p className="mt-4 text-white/80">
           With a commitment to innovation and fun, we aim to deliver engaging gaming experiences. Join us on our mission to revolutionize gaming.
         </p>
@@ -15,6 +18,7 @@ const OurValueSection = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 px-6 max-w-6xl mx-auto">
         {/* Vision */}
+        <Fade cascade>
         <div className="bg-white text-gray-800 rounded-lg shadow-lg p-6 text-center">
           <div className="text-blue-600 text-4xl mb-4 flex flex-col justify-center items-center">
            
@@ -27,7 +31,9 @@ const OurValueSection = () => {
           </p>
         </div>
 
+        </Fade>
         {/* Mission */}
+        <Fade cascade>
         <div className="bg-white text-gray-800 rounded-lg shadow-lg p-6 text-center">
           <div className="text-green-600 text-4xl mb-4 flex flex-col justify-center items-center">
             <FaRocket />
@@ -37,9 +43,11 @@ const OurValueSection = () => {
             To craft games that inspire, entertain, and connect players globally.
           </p>
         </div>
+        </Fade>
 
         {/* Motto */}
-        <div className="bg-white text-gray-800 rounded-lg shadow-lg p-6 text-center">
+       <Fade cascade>
+       <div className="bg-white text-gray-800 rounded-lg shadow-lg p-6 text-center">
           <div className="text-yellow-600 text-4xl mb-4 flex flex-col justify-center items-center">
             <FaQuoteRight />
           </div>
@@ -48,6 +56,7 @@ const OurValueSection = () => {
             Fun, innovation, and creativity drive everything we do.
           </p>
         </div>
+       </Fade>
       </div>
     </section>
   );

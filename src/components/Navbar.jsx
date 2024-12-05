@@ -1,9 +1,13 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import Toggle from "./Toggle";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
+import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
-  const {handleSignOut,user, setUser} = useContext(AuthContext)
+  const { handleSignOut, user, setUser } = useContext(AuthContext);
   const links = (
     <>
       <li>
@@ -15,6 +19,17 @@ const Navbar = () => {
       <li>
         <NavLink to="/allReview">All Review</NavLink>
       </li>
+      {user && (
+        <li>
+          <NavLink to="/myReview">My Review</NavLink>
+        </li>
+      )}
+
+      {user && (
+        <li>
+          <NavLink to="/addWatchList">My WatchList</NavLink>
+        </li>
+      )}
     </>
   );
   return (
@@ -49,12 +64,42 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
-       {user && user?.email ? <div className="flex gap-1 items-center">
-        <p>{user?.displayName}</p>
-        <img src={user?.photoURL} className="w-10 rounded-full" alt="" />
-        <Link to ='/login'> <button onClick={handleSignOut} className="btn">Login Out</button></Link>
-       </div> : <Link to ='/login'> <button onClick={handleSignOut} className="btn">Login </button></Link>}
+      <div className="navbar-end z-10">
+        {user && user?.email ? (
+          <div className="flex gap-1 items-center ">
+            <a
+              data-tooltip-id="tooltip-anchor-show"
+              data-tooltip-content={user?.displayName || "User"}
+              data-tooltip-delay-show={1000}
+            >
+              {user?.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  className="w-10 rounded-full"
+                  
+                />
+              ) : (
+                <FaUser className="w-10  rounded-full" />
+              )}
+            </a>
+            <Tooltip id="tooltip-anchor-show" />
+
+            <Link to="/login">
+              {" "}
+              <button onClick={handleSignOut} className="btn">
+                Login Out
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <Link to="/login">
+            {" "}
+            <button onClick={handleSignOut} className="btn">
+              Login{" "}
+            </button>
+          </Link>
+        )}
+        <Toggle></Toggle>
       </div>
     </div>
   );

@@ -10,10 +10,14 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "./priveate/PrivateRoute";
 import ReviewDetails from "../pages/ReviewDetails";
+import MyReview from "../pages/MyReview";
+import UpdateReview from "../pages/UpdateReview";
+import MyWatchList from "../pages/MyWatchList";
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Layout></Layout>,
+      errorElement: <div>404 | Page Not Found</div>,
       children: [
         {
             path: '/',
@@ -42,6 +46,19 @@ import ReviewDetails from "../pages/ReviewDetails";
           path: '/review/:id',
           element:<PrivateRoute><ReviewDetails></ReviewDetails></PrivateRoute>,
           loader: ({params}) => fetch(`http://localhost:5000/review/${params.id}`)
+        },
+        {
+          path: 'myReview',
+          element: <PrivateRoute><MyReview></MyReview></PrivateRoute>,
+        },
+        {
+          path: '/updateReview/:id',
+          element: <UpdateReview></UpdateReview>,
+          loader: ({params}) => fetch(`http://localhost:5000/allReviews/${params.id}`)
+        },
+        {
+          path: '/addWatchList',
+          element: <PrivateRoute><MyWatchList></MyWatchList></PrivateRoute>,
         }
       ]
     },

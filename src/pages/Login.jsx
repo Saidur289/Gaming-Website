@@ -17,7 +17,6 @@ const Login = () => {
       
       handleSingIn(email, password)
       .then((result) => {
-        console.log(result.user);
         setUser(result.user)
         e.target.reset()
         toast.success('user successfully sign in')
@@ -40,7 +39,7 @@ const Login = () => {
       })
     }
     return (
-        <div className="flex min-h-screen justify-center items-center">
+        <div className="bg-gradient-to-r from-blue-200 to-purple-300 flex justify-center items-center md:py-10">
         <div className="card bg-base-100 w-full max-w-lg shrink-0 rounded-none shadow-lg p-10">
            <h1 className="font-semibold text-center">Login Your Account</h1>
          <form onSubmit={handleLogin} className="card-body">
