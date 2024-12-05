@@ -6,6 +6,7 @@ const MyWatchList = () => {
     const {user} = useContext(AuthContext)
     const [reviews, setReviews] = useState([])
     const email = user?.email
+    // fetch bring date based on email
     useEffect(() => {
         fetch(`http://localhost:5000/addWatchList/${email}`)
         .then((res) => res.json())
