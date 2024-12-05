@@ -16,6 +16,7 @@ const AddReview = () => {
   const handleChangeRating = (e) => {
     setRating(e.target.value);
   };
+  // function for add review 
   const handleAddReview = (e) => {
     e.preventDefault();
     const form = e.target;
