@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const Games = ({review}) => {
-  // destructure
   const { title, description, genre, year, photo, rating, _id } = review
     
   
