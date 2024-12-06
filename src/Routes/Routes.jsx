@@ -22,7 +22,7 @@ import MyWatchList from "../pages/MyWatchList";
         {
             path: '/',
             element: <Home></Home>,
-            loader: () => fetch('http://localhost:5000/reviews'),
+            loader: () => fetch('https://chill-gamer-server-vert.vercel.app/reviews'),
         },
         {
             path: '/addReview',
@@ -31,7 +31,7 @@ import MyWatchList from "../pages/MyWatchList";
         {
             path: '/allReview',
             element: <AllReview></AllReview>,
-            loader: () => fetch('http://localhost:5000/allReviews')
+            loader: () => fetch('https://chill-gamer-server-vert.vercel.app/allReviews')
             
         },
         {
@@ -45,7 +45,7 @@ import MyWatchList from "../pages/MyWatchList";
         {
           path: '/review/:id',
           element:<PrivateRoute><ReviewDetails></ReviewDetails></PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/review/${params.id}`)
+          loader: ({params}) => fetch(`https://chill-gamer-server-vert.vercel.app/review/${params.id}`)
         },
         {
           path: 'myReview',
@@ -54,7 +54,7 @@ import MyWatchList from "../pages/MyWatchList";
         {
           path: '/updateReview/:id',
           element: <UpdateReview></UpdateReview>,
-          loader: ({params}) => fetch(`http://localhost:5000/allReviews/${params.id}`)
+          loader: ({params}) => fetch(`https://chill-gamer-server-vert.vercel.app/allReviews/${params.id}`)
         },
         {
           path: '/addWatchList',

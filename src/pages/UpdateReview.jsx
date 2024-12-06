@@ -32,7 +32,7 @@ const UpdateReview = () => {
     const photo = form.photo.value;
     const rating = form.rating.value;
     const review = { title, description, genre, year, photo, rating };
-    fetch(`http://localhost:5000/allReviews/${_id}`, {
+    fetch(`https://chill-gamer-server-vert.vercel.app/allReviews/${_id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -41,13 +41,15 @@ const UpdateReview = () => {
     })
     .then((res) => res.json())
     .then((data) => {
+       if(data.modifiedCount>0){
         Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: "Review Update Successfully",
-            showConfirmButton: false,
-            timer: 1500
-          });
+          position: "top-center",
+          icon: "success",
+          title: "Review Update Successfully",
+          showConfirmButton: false,
+          timer: 1500
+        });
+       }
     })
 
     
@@ -94,7 +96,7 @@ const UpdateReview = () => {
           <div className="md:flex mb-4">
             <div className="form-control md:w-1/2">
               <label className="label">
-                <span className="label-text">Genre</span>
+                <span className="label-text">Genres</span>
               </label>
               <select className="input input-bordered " defaultValue={genre} name="genre" id="day">
                 <option value="Action">Action</option>
@@ -166,6 +168,7 @@ const UpdateReview = () => {
                   placeholder="Game Title"
                   defaultValue={name}
                   className="input input-bordered w-full"
+                  readOnly
                 />
               </label>
             </div>
@@ -178,6 +181,7 @@ const UpdateReview = () => {
                 placeholder="Game Description"
                 defaultValue={email}
                 className="input input-bordered w-full"
+                readOnly
               />
             </div>
           </div>

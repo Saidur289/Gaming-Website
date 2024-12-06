@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddReview = () => {
   const { user } = useContext(AuthContext);
@@ -27,7 +28,7 @@ const AddReview = () => {
     const photo = form.photo.value;
     const rating = form.rating.value;
     const review = { title, description, genre, year, photo, rating, name, email };
-    fetch('http://localhost:5000/reviews', {
+    fetch('https://chill-gamer-server-vert.vercel.app/reviews', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -36,10 +37,13 @@ const AddReview = () => {
     })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
+      if(data.insertedId){
+        Swal.fire('Review added successfully')
+      }
     })
 
-    console.log(review);
+    // console.log(review);
   };
   return (
     <div className="bg-gradient-to-r from-blue-100 to-purple-200 p-24">
@@ -78,7 +82,7 @@ const AddReview = () => {
         <div className="md:flex mb-4">
           <div className="form-control md:w-1/2">
             <label className="label">
-              <span className="label-text">Genre</span>
+              <span className="label-text">Genres</span>
             </label>
             <select className="input input-bordered " name="genre" id="day">
               <option value="Action">Action</option>
@@ -147,8 +151,9 @@ const AddReview = () => {
               <input
                 type="text"
                 placeholder="Game Title"
-                defaultValue={name}
+                 defaultValue={name}
                 className="input input-bordered w-full"
+                readOnly
               />
             </label>
           </div>
@@ -161,13 +166,14 @@ const AddReview = () => {
               placeholder="Game Description"
               defaultValue={email}
               className="input input-bordered w-full"
+              readOnly
             />
           </div>
         </div>
 
         <input
           type="submit"
-          value="Add Now"
+          value="Add Review"
           className="btn bg-blue-950 text-white btn-block"
         />
       </form>

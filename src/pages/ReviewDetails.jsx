@@ -12,7 +12,7 @@ const ReviewDetails = () => {
   const handleWatchList = () => {
     const email = user.email
     const reviews = {title, description, genre, year, rating, email}
-    fetch('http://localhost:5000/addWatchList', {
+    fetch('https://chill-gamer-server-vert.vercel.app/addWatchList', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

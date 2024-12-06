@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Toggle from "./Toggle";
 import "react-tooltip/dist/react-tooltip.css";
@@ -8,6 +8,16 @@ import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
   const { handleSignOut, user, setUser } = useContext(AuthContext);
+  const navigate = useNavigate()
+  const location = useLocation()
+  const handleLogOut = () => {
+    handleSignOut()
+    .then(() => {
+      navigate(location?.state? '/' : '/')
+    })
+    .catch((error) => console.log('error'))
+  }
+  
   const links = (
     <>
       <li>
@@ -84,17 +94,17 @@ const Navbar = () => {
             </a>
             <Tooltip id="tooltip-anchor-show" />
 
-            <Link to="/login">
+            
               {" "}
-              <button onClick={handleSignOut} className="btn">
+              <button onClick={handleLogOut} className="btn bg-gradient-to-r from-blue-700 to-purple-800 text-white">
                 Login Out
               </button>
-            </Link>
+            
           </div>
         ) : (
           <Link to="/login">
             {" "}
-            <button onClick={handleSignOut} className="btn">
+            <button  className="btn bg-gradient-to-r from-blue-700 to-purple-800 text-white">
               Login{" "}
             </button>
           </Link>

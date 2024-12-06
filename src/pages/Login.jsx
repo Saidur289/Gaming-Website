@@ -3,6 +3,7 @@ import { FaGoogle } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -20,7 +21,14 @@ const Login = () => {
       .then((result) => {
         setUser(result.user)
         e.target.reset()
-        toast.success('user successfully sign in')
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "'user successfully sign in'",
+          showConfirmButton: false,
+          timer: 1000,
+          
+        });
         navigate(location?.state? location.state : '/')
       })
       .catch((error) => {
@@ -33,7 +41,7 @@ const Login = () => {
       handleLoginGoogle()
       .then((result) => {
         setUser(result.user)
-        toast.success('user successfully sign in')
+        Swal.fire('user successfully sign in')
         navigate(location?.state? location.state : '/')
       })
       .catch((error) => {

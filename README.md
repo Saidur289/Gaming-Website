@@ -1,8 +1,6 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Project Name : Chill Gamer Project </br>
+* Purpose Of This Project: You can review any kind game  from website by using fill up form  and know info about good games. It is very easy to know about games for all category on this website. </br>  
+* Key Feature: In my project I use user authentication for user security. No one see the your review  of other user. You will have sign in first for review the games.
+</br>
+* NPM Packages: I used npm react tootip  from npm library.For animate title and card I use . It is very easy to use. I also use npm react typewriter for animate title. </br>  
+* Live Link Of My Page : https://chill-gamer-project-14385.web.app/

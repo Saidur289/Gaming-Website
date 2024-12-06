@@ -1,13 +1,14 @@
 import { useLoaderData } from "react-router-dom";
 import Games from "../components/Games";
 import { useState } from "react";
+import { Fade } from "react-awesome-reveal";
 
 const AllReview = () => {
   const loadedReview = useLoaderData() || [];
   const [reviews, setReviews] = useState(loadedReview)
   // create function for filter data
   const handleFilterByGenres = genre => {
-    fetch(`http://localhost:5000/allReviews?genre=${genre}`)
+    fetch(`https://chill-gamer-server-vert.vercel.app/allReviews?genre=${genre}`)
     .then((res) => res.json())
     .then((data) => {
       setReviews(data)
@@ -19,7 +20,7 @@ const AllReview = () => {
   }
   // create function for sort data
   const handleSortByRating = rating => {
-    fetch(`http://localhost:5000/allReviews?sort=${rating}`)
+    fetch(`https://chill-gamer-server-vert.vercel.app/allReviews?sort=${rating}`)
     .then((res) => res.json())
     .then((data) => {
       
@@ -31,7 +32,8 @@ const AllReview = () => {
   }
 
   return (
-    <div className="bg-gradient-to-r from-blue-200 to-purple-300">
+    <Fade cascade>
+      <div className="bg-gradient-to-r from-blue-200 to-purple-300">
       <div className="flex justify-center items-center gap-3 py-5">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn m-1 bg-gradient-to-r from-blue-700 to-purple-800 text-white">
@@ -79,6 +81,7 @@ const AllReview = () => {
           ))}
       </div>
     </div>
+    </Fade>
   );
 };
 
