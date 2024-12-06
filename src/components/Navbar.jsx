@@ -97,7 +97,7 @@ const Navbar = () => {
             
               {" "}
               <button onClick={handleLogOut} className="btn bg-gradient-to-r from-blue-700 to-purple-800 text-white">
-                Login Out
+                Log Out
               </button>
             
           </div>
