@@ -28,7 +28,7 @@ const AddReview = () => {
     const photo = form.photo.value;
     const rating = form.rating.value;
     const review = { title, description, genre, year, photo, rating, name, email };
-    fetch('https://chill-gamer-server-vert.vercel.app/reviews', {
+    fetch('http://localhost:5000/reviews', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

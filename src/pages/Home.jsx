@@ -6,6 +6,7 @@ import OurValueSection from "../components/OurValueSection";
 import Slide from "../components/Slide";
 import { useLoaderData } from "react-router-dom";
 import Typewriter from 'typewriter-effect';
+import FeedBack from "../components/FeedBack";
 
 const Home = () => {
   const loadedReview = useLoaderData() || []
@@ -27,7 +28,7 @@ const Home = () => {
     <p className="text-center md:4/5 mx-auto pb-7 font-thin text-gray-700">Explore the pinnacle of gaming excellence in our Highest Rated Games section. Curated from top reviews and player ratings, this collection features the most acclaimed games that deliver unforgettable experiences. From thrilling adventures to epic battles, discover why these games have earned their spot as fan favorites!"</p>
     </div>
    <Fade cascade>
-    <div className=" grid grid-cols-1 gap-3 md:grid-cols-3 lg:grid-cols-3 lg:p-8">
+    <div className=" grid grid-cols-1 gap-3 md:grid-cols-4 lg:grid-cols-4 lg:p-8">
       {
         Array.isArray(loadedReview) && loadedReview.map((review, index) => <Games to review = {review} key={index}></Games>)
       }
@@ -37,6 +38,7 @@ const Home = () => {
    </div>
      <GamingStatsSection></GamingStatsSection>
      <OurValueSection></OurValueSection>
+     <FeedBack></FeedBack>
      
     </div>
   );

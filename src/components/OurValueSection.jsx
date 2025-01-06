@@ -3,7 +3,7 @@ import { FaEye, FaRocket, FaQuoteRight } from "react-icons/fa"; // React Icons à
 
 const OurValueSection = () => {
   return (
-    <section className="bg-gradient-to-r from-blue-500 to-purple-600 py-12 text-white">
+    <section className="bg-gradient-to-r from-blue-500 to-purple-600 py-10 text-white">
       <div className="max-w-6xl mx-auto text-center">
         <h3 className="text-sm font-semibold uppercase tracking-wide">Our Value</h3>
         <Fade>
@@ -16,7 +16,7 @@ const OurValueSection = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 px-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 px-6 ">
         {/* Vision */}
         <Fade cascade>
         <div className="bg-white text-gray-800 rounded-lg shadow-lg p-6 text-center">

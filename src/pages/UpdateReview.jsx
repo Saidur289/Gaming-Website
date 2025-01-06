@@ -32,7 +32,7 @@ const UpdateReview = () => {
     const photo = form.photo.value;
     const rating = form.rating.value;
     const review = { title, description, genre, year, photo, rating };
-    fetch(`https://chill-gamer-server-vert.vercel.app/allReviews/${_id}`, {
+    fetch(`http://localhost:5000/allReviews/${_id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

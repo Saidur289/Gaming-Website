@@ -9,7 +9,7 @@ const MyReview = () => {
   const email = user?.email;
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch(`https://chill-gamer-server-vert.vercel.app/myReview/${email}`)
+    fetch(`http://localhost:5000/myReview/${email}`)
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
@@ -27,7 +27,7 @@ const MyReview = () => {
       }).then((result) => {
         if (result.isConfirmed) {
         
-        fetch(`https://chill-gamer-server-vert.vercel.app/myReview/${id}`, {
+        fetch(`http://localhost:5000/myReview/${id}`, {
             method: 'DELETE'
         })
         .then((res) => res.json())

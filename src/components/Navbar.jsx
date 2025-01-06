@@ -7,7 +7,7 @@ import { Tooltip } from "react-tooltip";
 import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
-  const { handleSignOut, user, setUser } = useContext(AuthContext);
+  const { handleSignOut, user } = useContext(AuthContext);
   const navigate = useNavigate()
   const location = useLocation()
   const handleLogOut = () => {
@@ -23,16 +23,25 @@ const Navbar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
-        <NavLink to="/addReview">Add Review</NavLink>
-      </li>
+     
       <li>
         <NavLink to="/allReview">All Review</NavLink>
+      </li>
+      <li>
+        <NavLink to="/about">About Us</NavLink>
+      </li>
+      <li>
+        <NavLink to="/contact">Contact Us</NavLink>
       </li>
       {user && (
         <li>
           <NavLink to="/myReview">My Review</NavLink>
         </li>
+      )}
+      {user && (
+        <li>
+        <NavLink to="/addReview">Add Review</NavLink>
+      </li>
       )}
 
       {user && (
@@ -69,7 +78,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Gamer</a>
+        <a className="text-xl">Gamer</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>

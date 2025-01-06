@@ -1,4 +1,6 @@
 import React from "react";
+import {  FaFacebook, FaGoogle, FaLinkedin } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -8,7 +10,7 @@ const Footer = () => {
         <div>
           <h2 className="text-2xl font-bold">GAMEZONE</h2>
           <p className="mt-4 text-sm">
-            Copyright &copy; 2024 Filmax All Rights Reserved
+            Copyright &copy; 2025 Gamezone All Rights Reserved
           </p>
         </div>
 
@@ -28,11 +30,11 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-4">Additional Links</h3>
           <ul className="space-y-2">
-            <li>Games</li>
-            <li>Coming Soon</li>
-            <li>Trailers</li>
-            <li>Reviews</li>
-            <li>News</li>
+            <li><Link to ='/'>Home</Link></li>
+            <li><Link to = '/allReview'>All Reviews</Link></li>
+            <li><Link to = '/allReview'>Add Reviews</Link></li>
+            <li><Link to = '/about'>About Us</Link></li>
+            <li><Link to = '/contact'>Contact</Link></li>
           </ul>
         </div>
 
@@ -40,18 +42,16 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
           <div className="flex space-x-4">
-            <a  className="hover:text-gray-400">
-              Twitter
+            <a  target="_blank" href="https://www.facebook.com/sheikh.riaz.3158" className="hover:text-gray-400 flex items-center">
+            <FaFacebook className="mr-1"></FaFacebook>  Facebook
             </a>
-            <a  className="hover:text-gray-400">
-              Facebook
+            <a target="_blank" href="https://www.google.com/search?gs_ssp=eJzj4tTP1TcwMU02T1JgNGB0YPBiS8_PT89JBQBASQXT&q=google&oq=google&gs_lcrp=EgZjaHJvbWUqGAgBEC4YQxiDARjHARixAxjRAxiABBiKBTIOCAAQRRgnGDsYgAQYigUyGAgBEC4YQxiDARjHARixAxjRAxiABBiKBTIGCAIQRRg7MgYIAxBFGEEyBggEEEUYQTIGCAUQRRg8MgYIBhAFGEAyBggHEEUYQdIBCDc2NTFqMGoxqAIIsAIB&sourceid=chrome&ie=UTF-8"  className="hover:text-gray-400 flex items-center">
+            <FaGoogle className="mr-1"/>  Google+
             </a>
-            <a  className="hover:text-gray-400">
-              Google+
+            <a target="_blank" href="https://www.linkedin.com/feed/?legoTrackingToken=c34ZpnFFkTBxr71PqmgCc2UMfmlOrSdjtOoZsC5gr6litOoZp6Zdr6litOoVejAVejRApnhPpnlNpl9"    className="hover:text-gray-400 flex items-center">
+            <FaLinkedin className="mr-1"/>  LinkeDin
             </a>
-            <a  className="hover:text-gray-400">
-              Instagram
-            </a>
+        
             
           </div>
         </div>

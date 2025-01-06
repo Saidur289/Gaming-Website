@@ -8,7 +8,7 @@ const MyWatchList = () => {
     const email = user?.email
     // fetch bring date based on email
     useEffect(() => {
-        fetch(`https://chill-gamer-server-vert.vercel.app/addWatchList/${email}`)
+        fetch(`http://localhost:5000/addWatchList/${email}`)
         .then((res) => res.json())
         .then((data) => {
             setReviews(data)

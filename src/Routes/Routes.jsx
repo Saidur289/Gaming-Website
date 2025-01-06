@@ -13,16 +13,19 @@ import ReviewDetails from "../pages/ReviewDetails";
 import MyReview from "../pages/MyReview";
 import UpdateReview from "../pages/UpdateReview";
 import MyWatchList from "../pages/MyWatchList";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
+import ErrorPage from "../pages/ErrorPage";
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Layout></Layout>,
-      errorElement: <div>404 | Page Not Found</div>,
+      errorElement:<ErrorPage></ErrorPage>,
       children: [
         {
             path: '/',
             element: <Home></Home>,
-            loader: () => fetch('https://chill-gamer-server-vert.vercel.app/reviews'),
+            loader: () => fetch('http://localhost:5000/reviews'),
         },
         {
             path: '/addReview',
@@ -31,7 +34,7 @@ import MyWatchList from "../pages/MyWatchList";
         {
             path: '/allReview',
             element: <AllReview></AllReview>,
-            loader: () => fetch('https://chill-gamer-server-vert.vercel.app/allReviews')
+            loader: () => fetch('http://localhost:5000/allReviews')
             
         },
         {
@@ -44,8 +47,8 @@ import MyWatchList from "../pages/MyWatchList";
         },
         {
           path: '/review/:id',
-          element:<PrivateRoute><ReviewDetails></ReviewDetails></PrivateRoute>,
-          loader: ({params}) => fetch(`https://chill-gamer-server-vert.vercel.app/review/${params.id}`)
+          element:<ReviewDetails></ReviewDetails>,
+          loader: ({params}) => fetch(`http://localhost:5000/review/${params.id}`)
         },
         {
           path: 'myReview',
@@ -54,13 +57,22 @@ import MyWatchList from "../pages/MyWatchList";
         {
           path: '/updateReview/:id',
           element: <UpdateReview></UpdateReview>,
-          loader: ({params}) => fetch(`https://chill-gamer-server-vert.vercel.app/allReviews/${params.id}`)
+          loader: ({params}) => fetch(`http://localhost:5000/allReviews/${params.id}`)
         },
         {
           path: '/addWatchList',
           element: <PrivateRoute><MyWatchList></MyWatchList></PrivateRoute>,
+        },
+        {
+          path: '/about',
+          element: <About></About>,
+        },
+        {
+          path: '/contact',
+          element: <Contact></Contact>,
         }
       ]
     },
   ]);
   export default router
+  // http://localhost:5000

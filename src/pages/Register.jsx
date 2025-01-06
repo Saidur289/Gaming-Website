@@ -2,8 +2,9 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../provider/AuthProvider";
-import { toast } from "react-toastify";
-import Swal from "sweetalert2";
+import toast from "react-hot-toast";
+
+
 
 const Register = () => {
     const [show, setShow] = useState(false)
@@ -31,7 +32,7 @@ const Register = () => {
         handleSignUp(email, password)
         .then((result) => {
           setUser(result.user);
-          Swal.fire('user successfully sign in')
+          toast.success('user successfully sign in')
           e.target.reset()
           const updatedData = {
             displayName: name,
@@ -55,13 +56,7 @@ const Register = () => {
       handleLoginGoogle()
       .then((result) => {
         setUser(result.user)
-        Swal.fire({
-          position: "top-center",
-          icon: "success",
-          title: "'user successfully sign in'",
-          showConfirmButton: false,
-          timer: 1500
-        });
+        toast.success('Sign In Successfully')
         navigate(location?.state? location.state : '/')
       })
       .catch((error) => {
