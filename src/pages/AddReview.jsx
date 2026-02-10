@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddReview = () => {
   const { user } = useContext(AuthContext);
   const name = user?.displayName;
+  const navigate = useNavigate()
   const email = user?.email;
   const [publishingYear, setYear] = useState(2010);
   const [rating, setRating] = useState(5);
@@ -28,7 +30,7 @@ const AddReview = () => {
     const photo = form.photo.value;
     const rating = form.rating.value;
     const review = { title, description, genre, year, photo, rating, name, email };
-    fetch('http://localhost:5000/reviews', {
+    fetch('https://chill-gamer-server-rose-nine.vercel.app/reviews', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -40,6 +42,8 @@ const AddReview = () => {
       // console.log(data);
       if(data.insertedId){
         Swal.fire('Review added successfully')
+        navigate("/myReview")
+        
       }
     })
 

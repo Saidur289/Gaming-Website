@@ -9,7 +9,7 @@ const AllReview = () => {
   // create function for filter data
   const handleFilterByGenres = (genre) => {
     fetch(
-      `http://localhost:5000/allReviews?genre=${genre}`
+      `https://chill-gamer-server-rose-nine.vercel.app/allReviews?genre=${genre}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -22,7 +22,7 @@ const AllReview = () => {
   // create function for sort data
   const handleSortByRating = (rating) => {
     fetch(
-      `http://localhost:5000/allReviews?sort=${rating}`
+      `https://chill-gamer-server-rose-nine.vercel.app/allReviews?sort=${rating}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -86,7 +86,7 @@ const AllReview = () => {
             </ul>
           </div>
         </div>
-        <div className=" grid grid-cols-1 gap-3 md:grid-cols-4 lg:grid-cols-4 lg:p-8">
+        <div className=" grid grid-cols-1 gap-3 md:grid-cols-3 lg:grid-cols-3 lg:p-8">
           {Array.isArray(reviews) &&
             reviews.map((review, index) => (
               <Games to review={review} key={index}></Games>

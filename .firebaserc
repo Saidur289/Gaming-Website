@@ -1,5 +1,7 @@
 {
   "projects": {
     "default": "chill-gamer-project-14385"
-  }
+  },
+  "targets": {},
+  "etags": {}
 }
